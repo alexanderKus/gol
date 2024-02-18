@@ -17,7 +17,6 @@ static const int dy[] = { -1, 0,  1, -1, 1, -1, 0, 1};
 
 void init_board();
 void print_board();
-void print_next_board();
 size_t count_alive_cells();
 void step();
 int is_valid(size_t, size_t);
@@ -63,16 +62,6 @@ void print_board() {
     } 
     fflush(stdin);
 }
- 
-void print_next_board() {
-    for(size_t i = 0; i < WIDTH; i++) {
-        for(size_t j = 0; j < HEIGHT; j++) { 
-            printf("%c", next_board[i][j]);
-        }
-        printf("\n");
-    } 
-    fflush(stdin);
-}
 
 size_t count_alive_cells() {
     size_t count = 0;
@@ -109,7 +98,7 @@ void step() {
 }
 
 int is_valid(size_t x, size_t y) {
-    return x >= 0 && x < WIDTH && y >=0 && y < HEIGHT ? 1 : 0;
+    return x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT ? 1 : 0;
 }
 
 void update_board() {
